@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:news_api_app/Model/news_model.dart';
+import 'package:news_api_app/View/news_detail.dart';
 import 'package:news_api_app/Widget/spacing.dart';
+import 'package:get/get.dart';
 
 class NewsItemList extends StatelessWidget {
   final NewsModel newsModel;
@@ -11,7 +13,10 @@ class NewsItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.to(() => const NewsDetail(), arguments: newsModel);
+        print(newsModel);
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -43,9 +48,10 @@ class NewsItemList extends StatelessWidget {
             ],
           ),
           verticalSpace(5),
-          Text("Written by ${newsModel.author}"),
+          Text(
+              newsModel.author == null ? '' : "Written by ${newsModel.author}"),
           verticalSpace(8),
-          Text(newsModel.title.toString())
+          Text(newsModel.title.toString()),
         ],
       ),
     );
