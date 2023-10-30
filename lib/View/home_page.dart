@@ -17,10 +17,10 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('NEWS API APP'),
-            bottom: TabBar(
+            bottom: const TabBar(
                 tabs: [Tab(text: 'Breaking News'), Tab(text: 'All News')]),
           ),
-          body: TabBarView(children: [BreakingNews(), AllNews()]),
+          body: const TabBarView(children: [BreakingNews(), AllNews()]),
         ));
   }
 }

@@ -22,11 +22,9 @@ class _AllNewsState extends State<AllNews> {
           if (snapshot.hasData) {
             List<NewsModel> articleList = snapshot.data ?? [];
             return ListView.builder(
-              itemBuilder: (context, index) {
-                return NewsItemList(newsModel: articleList[index]);
-              },
-              itemCount: articleList.length,
-            );
+                itemCount: articleList.length,
+                itemBuilder: (context, index) =>
+                    NewsItemList(newsModel: articleList[index]));
           }
           return const Center(child: CircularProgressIndicator());
         },
