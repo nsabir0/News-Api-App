@@ -4,13 +4,13 @@ import 'package:news_api_app/Model/news_model.dart';
 
 class ApiService {
   final allNewsUrl =
-      'https://newsapi.org/v2/everything?q=bitcoin&apiKey=f446a72ad3734790a0e039fcde1c2306';
+      'https://newsapi.org/v2/everything?q=*&apiKey=f446a72ad3734790a0e039fcde1c2306';
   final breakingNewsUrl =
-      'https://newsapi.org/v2/top-headlines?country=us&apiKey=f446a72ad3734790a0e039fcde1c2306';
+      'https://newsapi.org/v2/top-headlines?q=*&apiKey=f446a72ad3734790a0e039fcde1c2306';
 
-  Future<List<NewsModel>> getAllNews() async {
+  Future<List<NewsModel>> getBreakingNews() async {
     try {
-      Response response = await get(Uri.parse(allNewsUrl));
+      Response response = await get(Uri.parse(breakingNewsUrl));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         List<dynamic> body = json['articles'];
@@ -25,9 +25,9 @@ class ApiService {
     }
   }
 
-  Future<List<NewsModel>> getBreakingNews() async {
+  Future<List<NewsModel>> getAllNews() async {
     try {
-      Response response = await get(Uri.parse(breakingNewsUrl));
+      Response response = await get(Uri.parse(allNewsUrl));
       if (response.statusCode == 200) {
         Map<String, dynamic> json = jsonDecode(response.body);
         List<dynamic> body = json['articles'];
