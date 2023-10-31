@@ -6,7 +6,7 @@ class ApiService {
   final allNewsUrl =
       'https://newsapi.org/v2/everything?q=*&apiKey=f446a72ad3734790a0e039fcde1c2306';
   final breakingNewsUrl =
-      'https://newsapi.org/v2/top-headlines?q=*&apiKey=f446a72ad3734790a0e039fcde1c2306';
+      'https://newsapi.org/v2/top-headlines?country=us&category=science&category=technology&apiKey=f446a72ad3734790a0e039fcde1c2306';
 
   Future<List<NewsModel>> getBreakingNews() async {
     try {

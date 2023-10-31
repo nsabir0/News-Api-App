@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:news_api_app/Model/news_model.dart';
 import 'package:news_api_app/Widget/spacing.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewsDetail extends StatefulWidget {
   const NewsDetail({super.key});
@@ -25,11 +26,11 @@ class _NewsDetailState extends State<NewsDetail> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: 170,
+                height: 200,
                 width: double.infinity,
                 child: Image.network(
                   newsModel.urlToImage.toString(),
-                  fit: BoxFit.fitWidth,
+                  fit: BoxFit.cover,
                   loadingBuilder: (BuildContext context, Widget child,
                       ImageChunkEvent? loadingProgress) {
                     if (loadingProgress == null) return child;
@@ -42,33 +43,33 @@ class _NewsDetailState extends State<NewsDetail> {
                   },
                 ),
               ),
-              verticalSpace(8),
+              verticalSpace(8.h),
               Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.all(6.0),
+                    padding: EdgeInsets.all(6.dg),
                     decoration: BoxDecoration(
                       color: Colors.red,
-                      borderRadius: BorderRadius.circular(30.0),
+                      borderRadius: BorderRadius.circular(30.r),
                     ),
                     child: Text(newsModel.source!.name.toString(),
                         style: const TextStyle(color: Colors.white)),
                   ),
-                  horizontalSpace(8),
+                  horizontalSpace(8.w),
                   Text(newsModel.publishedAt.toString())
                 ],
               ),
-              verticalSpace(5),
+              verticalSpace(5.h),
               Text(
                   newsModel.author == null
                       ? 'Unknown Writer'
                       : "Written by ${newsModel.author}",
                   style: const TextStyle(decoration: TextDecoration.underline)),
-              verticalSpace(8),
+              verticalSpace(8.h),
               Text(newsModel.title.toString()),
-              verticalSpace(8),
+              verticalSpace(8.h),
               Text(newsModel.description.toString()),
-              verticalSpace(8),
+              verticalSpace(8.h),
               ElevatedButton(
                   onPressed: () async {
                     final Uri url = Uri.parse(newsModel.url.toString());
