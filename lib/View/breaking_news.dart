@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:news_api_app/Controller/news_controller.dart';
+import 'package:news_api_app/Controller/breaking_news_controller.dart';
 import 'package:news_api_app/Widget/news_category_grid_list.dart';
 import 'package:news_api_app/Widget/news_item_list.dart';
 
@@ -12,7 +12,7 @@ class BreakingNews extends StatefulWidget {
 }
 
 class _BreakingNewsState extends State<BreakingNews> {
-  NewsController controller = Get.put(NewsController());
+  BreakingNewsController controller = Get.put(BreakingNewsController());
 
   @override
   Widget build(BuildContext context) {
